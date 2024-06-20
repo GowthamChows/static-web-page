@@ -1,1 +1,20 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: static-web
+  namespace: my-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: static-web
+  template:
+    metadata:
+      labels:
+        app: static-web
+    spec:
+      containers:
+      - name: static-web
+        image: 381492134013.dkr.ecr.us-west-2.amazonaws.com/static-webpage:latest # change the image url as in the ecr 
+        ports:
+        - containerPort: 80
